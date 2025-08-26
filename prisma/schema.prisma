@@ -9,41 +9,43 @@ datasource db {
 
 
 model User {
-  id String @id @default(cuid())
-  name String
-  email String @unique
-  password String
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  tasks Task[]
+  tasks    Task[]
   timeLogs TimeLog[]
 
   @@map("users")
 }
 
 model Task {
-  id String @id @default(cuid())
-  title String
+  id          String    @id @default(cuid())
+  title       String
   description String?
-  status TaskStatus @default(PENDING)
-  userId String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  status      TaskStatus @default(PENDING)
+  userId      String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   timeLogs TimeLog[]
 
   @@map("tasks")
 }
 
 model TimeLog {
-  id String @id @default(cuid())
+  id        String    @id @default(cuid())
   startTime DateTime
-  endTime DateTime?
-  duration Int?
-  taskId String
-  userId String
+  endTime   DateTime?
+  duration  Int?
+  taskId    String
+  userId    String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 
   task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
