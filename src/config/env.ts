@@ -2,7 +2,15 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-export const config = {
+export const config: {
+  port: string | number;
+  jwtSecret: string;
+  jwtExpiresIn: string;
+  nodeEnv: string;
+  clientUrl: string;
+  geminiApiKey: string;
+  databaseUrl: string;
+} = {
   port: process.env.PORT || 5000,
   jwtSecret: process.env.JWT_SECRET || 'thrhrher86h',
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || '7d',
