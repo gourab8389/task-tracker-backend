@@ -60,7 +60,7 @@ Built with **Express**, **Prisma**, **PostgreSQL**, and **JWT Authentication**.
 ## ENV 
 
 - Database
-DATABASE_URL="postgresql://username:password@localhost:5432/task_tracker_db"
+DATABASE_URL="postgresql-url"
 
 - JWT
 JWT_SECRET="your_super_secret_jwt_key_here_make_it_long_and_secure"
