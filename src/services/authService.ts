@@ -46,7 +46,7 @@ class AuthService {
     const isPasswordValid = await comparePassword(data.password, user.password);
 
     if (!isPasswordValid) {
-      throw new Error('Invalid credentials');
+      throw new Error('Invalid password');
     }
 
     const token = generateToken({ userId: user.id, email: user.email });

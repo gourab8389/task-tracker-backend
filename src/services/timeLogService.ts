@@ -10,7 +10,6 @@ class TimeLogService {
       throw new Error('Task not found');
     }
 
-    // Check if there's already an active timer for this user
     const activeTimer = await prisma.timeLog.findFirst({
       where: { userId, endTime: null },
     });
@@ -19,7 +18,6 @@ class TimeLogService {
       throw new Error('You already have an active timer. Please stop it first.');
     }
 
-    // Update task status to IN_PROGRESS
     await prisma.task.update({
       where: { id: taskId },
       data: { status: 'IN_PROGRESS' },
